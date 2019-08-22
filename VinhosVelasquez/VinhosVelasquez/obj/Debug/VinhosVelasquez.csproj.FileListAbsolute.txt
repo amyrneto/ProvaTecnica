@@ -1,0 +1,15 @@
+C:\Users\amyr\work\Ubots\ProvaTecnica\VinhosVelasquez\VinhosVelasquez\bin\Debug\VinhosVelasquez.mdf
+C:\Users\amyr\work\Ubots\ProvaTecnica\VinhosVelasquez\VinhosVelasquez\bin\Debug\VinhosVelasquez_log.ldf
+C:\Users\amyr\work\Ubots\ProvaTecnica\VinhosVelasquez\VinhosVelasquez\bin\Debug\VinhosVelasquez.exe.config
+C:\Users\amyr\work\Ubots\ProvaTecnica\VinhosVelasquez\VinhosVelasquez\bin\Debug\VinhosVelasquez.exe
+C:\Users\amyr\work\Ubots\ProvaTecnica\VinhosVelasquez\VinhosVelasquez\bin\Debug\VinhosVelasquez.pdb
+C:\Users\amyr\work\Ubots\ProvaTecnica\VinhosVelasquez\VinhosVelasquez\obj\Debug\VinhosVelasquez.csprojAssemblyReference.cache
+C:\Users\amyr\work\Ubots\ProvaTecnica\VinhosVelasquez\VinhosVelasquez\obj\Debug\VinhosVelasquez.MainForm.resources
+C:\Users\amyr\work\Ubots\ProvaTecnica\VinhosVelasquez\VinhosVelasquez\obj\Debug\VinhosVelasquez.Properties.Resources.resources
+C:\Users\amyr\work\Ubots\ProvaTecnica\VinhosVelasquez\VinhosVelasquez\obj\Debug\VinhosVelasquez.csproj.GenerateResource.cache
+C:\Users\amyr\work\Ubots\ProvaTecnica\VinhosVelasquez\VinhosVelasquez\obj\Debug\VinhosVelasquez.csproj.CoreCompileInputs.cache
+C:\Users\amyr\work\Ubots\ProvaTecnica\VinhosVelasquez\VinhosVelasquez\obj\Debug\VinhosVelasquez.exe
+C:\Users\amyr\work\Ubots\ProvaTecnica\VinhosVelasquez\VinhosVelasquez\obj\Debug\VinhosVelasquez.pdb
+C:\Users\amyr\work\Ubots\ProvaTecnica\VinhosVelasquez\VinhosVelasquez\bin\Debug\Newtonsoft.Json.dll
+C:\Users\amyr\work\Ubots\ProvaTecnica\VinhosVelasquez\VinhosVelasquez\bin\Debug\Newtonsoft.Json.xml
+C:\Users\amyr\work\Ubots\ProvaTecnica\VinhosVelasquez\VinhosVelasquez\obj\Debug\VinhosVelasquez.csproj.CopyComplete
