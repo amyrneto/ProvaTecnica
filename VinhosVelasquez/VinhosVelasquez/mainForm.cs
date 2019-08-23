@@ -356,12 +356,6 @@ namespace VinhosVelasquez
 			PopulateSales();
 		}
 
-		private void btnMaisFiel_Click(object sender, EventArgs e)
-		{
-			// Retorna o cliente mais fiel
-			MessageBox.Show("@todo");
-		}
-
 		private void importarTudoToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			importClientsToolStripMenuItem_Click(sender, e);
@@ -385,20 +379,129 @@ namespace VinhosVelasquez
 		private void btnSugerir_Click(object sender, EventArgs e)
 		{
 			int r = dataGridClientes.CurrentRow.Index;
-			string s = dataGridClientes.Rows[r].Cells[0].Value.ToString();
-			int id = int.Parse(s);
+			string cpf = dataGridClientes.Rows[r].Cells[2].Value.ToString();
 
-			string category = FindFavoriteCategoryForClient(id);
-			Console.Text = category;
+			FindFavoriteVarietyForClient(cpf, out string variedade);
+			Console.Text = variedade;
+			MostSoldVariety(variedade, out int itemId);
+
+			string query = "SELECT a.codigo, a.produto, a.variedade, a.pais, a.categoria, a.safra, a.preco FROM Itens a " +
+				"WHERE Id = " + itemId.ToString();
+
+			using (connection = new SqlConnection(connectionString))
+			using (SqlCommand command = new SqlCommand(query, connection))
+			using (SqlDataAdapter adapter = new SqlDataAdapter(command)) {
+				DataTable tableItems = new DataTable();
+				adapter.Fill(tableItems);
+
+				lblCodigo.Text = tableItems.Rows[0].ItemArray.GetValue(0).ToString();
+				lblProduto.Text = tableItems.Rows[0].ItemArray.GetValue(1).ToString();
+				lblVariedade.Text = tableItems.Rows[0].ItemArray.GetValue(2).ToString();
+				lblPais.Text = tableItems.Rows[0].ItemArray.GetValue(3).ToString();
+				lblCategoria.Text = tableItems.Rows[0].ItemArray.GetValue(4).ToString();
+				lblSafra.Text = tableItems.Rows[0].ItemArray.GetValue(5).ToString();
+				lblPreco.Text = tableItems.Rows[0].ItemArray.GetValue(6).ToString();
+			}
 
 		}
 
-		private string FindFavoriteCategoryForClient(int clientId)
+		private void FindFavoriteVarietyForClient(string clientCPF, out string variedade)
 		{
-			string category="";
+			variedade = "";
+			string query;
+			List<string> catList = new List<string>();
+			List<int> scores;
+			List<string> varScores;
+			query = "SELECT  i.variedade FROM Itens i "+
+				"INNER JOIN ItensVendas iv ON i.id = iv.ItemID "+
+				"INNER JOIN Vendas v ON v.Id = iv.VendaId " +
+				"WHERE v.cpf_cliente = @CPFcliente; ";
 
 
-			return category;
+			using (connection = new SqlConnection(connectionString))
+			using (SqlCommand command = new SqlCommand(query, connection))
+			using (SqlDataAdapter adapter = new SqlDataAdapter(command)) {
+				command.Parameters.AddWithValue("@CPFcliente", clientCPF);
+				DataTable dataTable = new DataTable();
+				adapter.Fill(dataTable);
+				for (int i = 0; i < dataTable.Rows.Count; i++) {
+					variedade = dataTable.Rows[i].ItemArray.GetValue(0).ToString();
+					catList.Add(variedade);
+				}
+			}
+
+			scores = new List<int>();
+			varScores = new List<string>();
+
+			foreach (string c in catList) {
+				if (varScores.Contains(c)) {
+					int i = varScores.FindIndex(x => x == c );
+					scores[i]++;
+				}
+				else {
+					varScores.Add(c);
+					scores.Add(1);
+				}
+
+			}
+			int max = 0;
+			int index = 0;
+			for (int i=0; i<scores.Count; i++) {
+				if (scores[i] > max) {
+					max = scores[i];
+					index = i;
+				}
+			}
+			variedade = varScores[index];
+		}
+
+		private void MostSoldVariety(string variedade, out int id)
+		{
+			string query, itemId;
+			List<string> itemList = new List<string>();
+			List<int> scores;
+			List<string> itemScores;
+			query = "SELECT a.Id FROM Itens a "+
+				"INNER JOIN ItensVendas b ON a.id = b.ItemID " +
+				"INNER JOIN Vendas v ON v.Id = b.VendaId "+
+				"WHERE a.variedade = @Variedade";
+
+
+			using (connection = new SqlConnection(connectionString))
+			using (SqlCommand command = new SqlCommand(query, connection))
+			using (SqlDataAdapter adapter = new SqlDataAdapter(command)) {
+				command.Parameters.AddWithValue("@Variedade", variedade);
+				DataTable dataTable = new DataTable();
+				adapter.Fill(dataTable);
+				for (int i = 0; i < dataTable.Rows.Count; i++) {
+					itemId = dataTable.Rows[i].ItemArray.GetValue(0).ToString();
+					itemList.Add(itemId);
+				}
+			}
+
+			scores = new List<int>();
+			itemScores = new List<string>();
+
+			foreach (string c in itemList) {
+				if (itemScores.Contains(c)) {
+					int i = itemScores.FindIndex(x => x == c);
+					scores[i]++;
+				}
+				else {
+					itemScores.Add(c);
+					scores.Add(1);
+				}
+
+			}
+			int max = 0;
+			int index = 0;
+			for (int i = 0; i < scores.Count; i++) {
+				if (scores[i] > max) {
+					max = scores[i];
+					index = i;
+				}
+			}
+			id = int.Parse(itemScores[index]);
 		}
 	}
 }

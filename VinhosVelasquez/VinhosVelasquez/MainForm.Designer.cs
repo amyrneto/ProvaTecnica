@@ -68,9 +68,10 @@
 			this.txtAno = new System.Windows.Forms.TextBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.tabRanking = new System.Windows.Forms.TabPage();
-			this.dataGridUnicSalesPerClient = new System.Windows.Forms.DataGridView();
 			this.label10 = new System.Windows.Forms.Label();
 			this.lblClienteMaisFiel = new System.Windows.Forms.Label();
+			this.dataGridUnicSalesPerClient = new System.Windows.Forms.DataGridView();
+			this.lblPreco = new System.Windows.Forms.Label();
 			this.menuStrip1.SuspendLayout();
 			this.panelInterface.SuspendLayout();
 			this.tabClientes.SuspendLayout();
@@ -161,6 +162,7 @@
 			// 
 			// tabClientes
 			// 
+			this.tabClientes.Controls.Add(this.lblPreco);
 			this.tabClientes.Controls.Add(this.lblCodigo);
 			this.tabClientes.Controls.Add(this.lblSafra);
 			this.tabClientes.Controls.Add(this.lblCategoria);
@@ -503,15 +505,6 @@
 			this.tabRanking.Text = "Ranking de Fidelidade";
 			this.tabRanking.UseVisualStyleBackColor = true;
 			// 
-			// dataGridUnicSalesPerClient
-			// 
-			this.dataGridUnicSalesPerClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridUnicSalesPerClient.Location = new System.Drawing.Point(3, 70);
-			this.dataGridUnicSalesPerClient.Name = "dataGridUnicSalesPerClient";
-			this.dataGridUnicSalesPerClient.RowTemplate.Height = 28;
-			this.dataGridUnicSalesPerClient.Size = new System.Drawing.Size(808, 464);
-			this.dataGridUnicSalesPerClient.TabIndex = 5;
-			// 
 			// label10
 			// 
 			this.label10.AutoSize = true;
@@ -529,6 +522,24 @@
 			this.lblClienteMaisFiel.Size = new System.Drawing.Size(45, 20);
 			this.lblClienteMaisFiel.TabIndex = 16;
 			this.lblClienteMaisFiel.Text = "aaaa";
+			// 
+			// dataGridUnicSalesPerClient
+			// 
+			this.dataGridUnicSalesPerClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridUnicSalesPerClient.Location = new System.Drawing.Point(3, 70);
+			this.dataGridUnicSalesPerClient.Name = "dataGridUnicSalesPerClient";
+			this.dataGridUnicSalesPerClient.RowTemplate.Height = 28;
+			this.dataGridUnicSalesPerClient.Size = new System.Drawing.Size(808, 464);
+			this.dataGridUnicSalesPerClient.TabIndex = 5;
+			// 
+			// lblPreco
+			// 
+			this.lblPreco.AutoSize = true;
+			this.lblPreco.Location = new System.Drawing.Point(810, 228);
+			this.lblPreco.Name = "lblPreco";
+			this.lblPreco.Size = new System.Drawing.Size(49, 20);
+			this.lblPreco.TabIndex = 11;
+			this.lblPreco.Text = "preço";
 			// 
 			// MainForm
 			// 
@@ -615,6 +626,7 @@
 		private System.Windows.Forms.DataGridView dataGridUnicSalesPerClient;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label lblClienteMaisFiel;
+		private System.Windows.Forms.Label lblPreco;
 	}
 }
 
